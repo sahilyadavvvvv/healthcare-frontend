@@ -511,7 +511,7 @@ export const MyApplicationsPage = () => {
                           </div>
                           {app.cvUrl && (
                             <a 
-                              href={`http://localhost:8080${app.cvUrl.replace('/api/listings/media/', '/api/uploads/')}`} 
+                              href={`${process.env.REACT_APP_API_URL || 'http://localhost:8080'}${app.cvUrl.replace('/api/listings/media/', '/api/uploads/')}`} 
                               target="_blank" 
                               rel="noopener noreferrer" 
                               className="px-6 py-2 bg-ethereal-surface-low border border-ethereal-primary/20 text-ethereal-primary font-bold rounded-xl hover:bg-ethereal-primary hover:text-white transition-all duration-300 flex items-center gap-2"

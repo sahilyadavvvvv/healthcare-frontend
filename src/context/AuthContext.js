@@ -26,7 +26,15 @@ export const AuthProvider = ({ children }) => {
     
     if (token && storedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser);
+        
+        // Safeguard against 'Mayank' or invalid sessions
+        if (parsedUser.fullName === 'Mayank' || !parsedUser.email) {
+          logout();
+          return;
+        }
+        
+        setUser(parsedUser);
       } catch (error) {
         logout();
       }
